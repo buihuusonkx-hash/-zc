@@ -1,5 +1,5 @@
 {
-  "name": "Math Matrix Pro 2026",
-  "description": "Hệ thống xây dựng ma trận, đặc tả và tạo đề thi chuẩn hóa theo chương trình giáo dục phổ thông mới 2026.",
+  "name": "Ma trận Toán học Pro",
+  "description": "Công cụ toàn diện hỗ trợ giáo viên xây dựng đề thi chuẩn hóa qua quy trình 4 bước: Nhập liệu, Ma trận, Ma trận đặc tả và Tạo đề.",
   "requestFramePermissions": []
 }
