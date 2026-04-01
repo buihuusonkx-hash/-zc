@@ -1,1 +1,191 @@
 @import "tailwindcss";
+
+/* Font mặc định: Times New Roman cho toàn bộ ứng dụng */
+
+@theme {
+  --font-sans: "Times New Roman", Times, serif;
+  --font-mono: "Times New Roman", Times, serif;
+  --font-serif: "Times New Roman", Times, serif;
+}
+
+/* ============================================================
+   Google Material 3 / Gemini Color Token System
+   Áp dụng cho giao diện Tạo đề thi
+   ============================================================ */
+:root {
+  /* Primary - Blue (Google Blue) */
+  --md-primary: #0b57d0;
+  --md-on-primary: #ffffff;
+  --md-primary-container: #d3e3fd;
+  --md-on-primary-container: #041e49;
+
+  /* Secondary */
+  --md-secondary: #004a77;
+  --md-secondary-container: #c2e7ff;
+  --md-on-secondary-container: #001d35;
+
+  /* Surface */
+  --md-surface: #ffffff;
+  --md-surface-container: #f3f6fc;
+  --md-surface-container-high: #e9eef6;
+  --md-surface-variant: #e1e3e1;
+  --md-on-surface: #1f1f1f;
+  --md-on-surface-low: #727676;
+
+  /* Accent / Tertiary (Google Green) */
+  --md-tertiary: #1ea446;
+  --md-tertiary-container: #ddf8d8;
+
+  /* Error */
+  --md-error: #b3261e;
+  --md-error-container: #f9dedc;
+
+  /* Outline */
+  --md-outline: #747775;
+  --md-outline-variant: #c4c7c5;
+
+  /* Inverse */
+  --md-inverse-surface: #303030;
+  --md-inverse-on-surface: #f2f2f2;
+  --md-inverse-primary: #a8c7fa;
+
+  /* Elevation shadow tokens */
+  --md-shadow-1: 0px 2px 1px -1px rgba(0,0,0,.2), 0px 1px 1px 0px rgba(0,0,0,.14), 0px 1px 3px 0px rgba(0,0,0,.12);
+  --md-shadow-2: 0px 3px 1px -2px rgba(0,0,0,.2), 0px 2px 2px 0px rgba(0,0,0,.14), 0px 1px 5px 0px rgba(0,0,0,.12);
+  --md-shadow-3: 0px 3px 3px -2px rgba(0,0,0,.2), 0px 3px 4px 0px rgba(0,0,0,.14), 0px 1px 8px 0px rgba(0,0,0,.12);
+  --md-shadow-4: 0px 2px 4px -1px rgba(0,0,0,.2), 0px 4px 5px 0px rgba(0,0,0,.14), 0px 1px 10px 0px rgba(0,0,0,.12);
+}
+
+@layer base {
+  body {
+    @apply bg-slate-50 text-slate-900;
+    font-family: "Times New Roman", Times, serif;
+  }
+}
+
+/* ============================================================
+   Exam Paper Styles (Trang đề thi in được)
+   ============================================================ */
+.exam-paper {
+  background: var(--md-surface);
+  color: var(--md-on-surface);
+  box-shadow: var(--md-shadow-4);
+  font-family: "Times New Roman", Times, serif;
+}
+
+.exam-paper .exam-header {
+  border-bottom: 2px solid var(--md-on-surface);
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
+}
+
+.exam-paper .exam-part-badge {
+  background: var(--md-inverse-surface);
+  color: var(--md-inverse-on-surface);
+  font-weight: 700;
+  font-size: 0.7rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.exam-paper .exam-part-I .exam-part-badge { background: var(--md-primary); }
+.exam-paper .exam-part-II .exam-part-badge { background: #7e5700; }
+.exam-paper .exam-part-III .exam-part-badge { background: #00696d; }
+
+.exam-paper .question-card {
+  border-left: 3px solid var(--md-outline-variant);
+  padding-left: 1rem;
+  margin-bottom: 1.5rem;
+  transition: border-color 0.2s;
+}
+.exam-paper .question-card:hover {
+  border-left-color: var(--md-primary);
+}
+
+.exam-paper .answer-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.75rem;
+  border: 1px solid var(--md-outline-variant);
+  border-radius: 20px;
+  font-size: 0.85rem;
+  background: var(--md-surface-container);
+  transition: background 0.15s, border-color 0.15s;
+}
+.exam-paper .answer-chip:hover {
+  background: var(--md-primary-container);
+  border-color: var(--md-primary);
+}
+
+.exam-paper .ds-statement {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 0.75rem;
+  border-radius: 8px;
+  background: var(--md-surface-container);
+  font-size: 0.88rem;
+  margin-bottom: 0.5rem;
+  border: 1px solid var(--md-outline-variant);
+}
+
+.exam-paper .ds-label {
+  font-weight: 800;
+  color: var(--md-primary);
+  min-width: 1.6rem;
+  flex-shrink: 0;
+}
+
+.exam-paper .tln-blank {
+  display: inline-block;
+  width: 8rem;
+  border-bottom: 2px solid var(--md-on-surface);
+  margin-left: 0.25rem;
+  vertical-align: bottom;
+}
+
+/* Custom styles for exam rendering */
+.font-serif {
+  font-family: "Times New Roman", Times, serif;
+}
+
+/* Ensure any element uses Times New Roman by default */
+* {
+  font-family: "Times New Roman", Times, serif;
+}
+
+/* KaTeX custom overrides */
+.katex {
+  font-size: 1.1em;
+}
+
+/* Scrollbar (pointer:fine) */
+@media (pointer: fine) {
+  ::-webkit-scrollbar, ::-webkit-scrollbar-corner {
+    background: transparent;
+    height: 12px;
+    width: 12px;
+  }
+  ::-webkit-scrollbar-button { height: 0; width: 0; }
+  ::-webkit-scrollbar-thumb {
+    background: content-box rgba(0,0,0,.15);
+    border: 2px solid transparent;
+    border-radius: 9999px;
+    min-height: 48px;
+    min-width: 48px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: content-box rgba(0,0,0,.3);
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print { display: none; }
+  body { background: white; }
+  .bg-white { box-shadow: none !important; border: none !important; }
+  .exam-paper { box-shadow: none; }
+}
